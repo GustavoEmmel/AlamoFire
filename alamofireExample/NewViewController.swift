@@ -88,13 +88,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
          let cell = tableView.dequeueReusableCell(withIdentifier: "celteste", for: indexPath) as! TableViewCell
         
-        
-        
         cell.myLabel.text = self.bookList[indexPath.row].title
         
-        cell.myImage.sd_setImage(with: URL(string: self.bookList[indexPath.row].imgThumbnailUrl))
+        cell.myImage.sd_setImage(with: URL(string: self.bookList[indexPath.row].imgThumbnailUrl)) { (image, error, imageCacheType, imageUrl) in
+            cell.myLoad.stopAnimating()
+        }
 
-        
         return cell
     }
     
