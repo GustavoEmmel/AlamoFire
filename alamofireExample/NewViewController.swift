@@ -45,13 +45,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                                 book.title = title
                             }
 
-                            if let imgURL = obj["imgURL"] as? String {
+                            if let imgURL = obj["url"] as? String {
                                 book.imgURL = imgURL
                             }
 
-                            if let imgThumbnailUrl = obj["imgThumbnailUrl"] as? String {
+                            if let imgThumbnailUrl = obj["thumbnailUrl"] as? String {
                                 book.imgThumbnailUrl = imgThumbnailUrl
-                                print(imgThumbnailUrl)
 
                             }
 
@@ -93,9 +92,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         cell.myLabel.text = self.bookList[indexPath.row].title
         
-        if(self.bookList[indexPath.row].imgThumbnailUrl != nil){
-            cell.myImage.sd_setImage(with: URL(string: self.bookList[indexPath.row].imgThumbnailUrl))
-        }
+        cell.myImage.sd_setImage(with: URL(string: self.bookList[indexPath.row].imgThumbnailUrl))
 
         
         return cell
